@@ -11,8 +11,6 @@ void makeComputerMove();
 int minMax(char arr[3][3], bool iscomputer);
 int status(char arr[3][3]);
 
-//won????
-
 
 char board[3][3] = {{' ', ' ', ' '},
                     {' ', ' ', ' '},
@@ -21,14 +19,6 @@ char iconuser;
 char iconcomputer;
 
 int main(){
-    //3;
-    //SHIIIIIIIIIIIIII
-    /*
-    stuff:
-    board evaluator aka if anyone has won or not
-    move maker/checker aka making the moves and choosing if the move thats being made is legal or not
-    computer move maker aka something that interacts with the move maker/checker.
-    */
     int choice = -1;
     getIcons();
     std::cout <<"This is the user: "<<iconuser<<std::endl;
@@ -101,9 +91,7 @@ int status(char arr[3][3]){
     if(temp == iconuser){
         return 2;
     }
-    //return 0 if its a TIEEEEE
-    //NOT whenever u feel like it
-    //return 69 for nothing happening
+
     for(int r = 0; r < 3; r++){
         for(int c = 0; c < 3; c++){
             if(arr[r][c] == ' '){
@@ -213,8 +201,7 @@ void makeHumanMove(){
         std::cout <<"row = "<<row<<"\n";
         row -= 1;
         column -= 1;
-        //all that had to happen with &&, was even if one of them was satisfied as false like column being higher than 0 it would
-        //become false and not run.
+
         if(isAValidMove(row, column)){
             board[row][column] = iconuser;
             return;
@@ -259,8 +246,7 @@ void getIcons(){
 
 void clearScreen(){
     std::cout <<"\033[2J" <<std::flush;
-    //all that stuff smh translates in raw bytes to the escape button, which when put directly into
-    //the terminal display communication that it has with the cpp app through std::flush makes it all go away;
+
     }
 
 void printSeperator(){
