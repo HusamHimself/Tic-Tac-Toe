@@ -10,7 +10,7 @@ void getIcons();
 void makeComputerMove();
 int minMax(char arr[3][3], bool iscomputer);
 int status(char arr[3][3]);
-
+void checkTie(int n);
 
 char board[3][3] = {{' ', ' ', ' '},
                     {' ', ' ', ' '},
@@ -20,6 +20,7 @@ char iconcomputer;
 
 int main(){
     int choice = -1;
+    int moves = 0;
     getIcons();
     std::cout <<"This is the user: "<<iconuser<<std::endl;
     std::cout <<"This is the computer: "<<iconcomputer<<std::endl;
@@ -29,25 +30,20 @@ int main(){
         std::cin >>choice;
     }while(choice != 0 && choice != 1);
 
-    int moves = 0;
-
     while(status(board) != 1){
-        if(moves == 9){
-            displayBoard();
-            std::cout <<"You tied!!!\n";
-            std::cout <<"Good job that's as good as it'll go for you.";
-        }
         choice %= 2;
         if(choice == 0){
             makeComputerMove();
             moves++;
             choice++;
+            checkTie(choice);
             continue;
         }
         else{
             makeHumanMove();
             moves++;
             choice++;
+            checkTie(choice);
             continue;
         }
         
@@ -55,6 +51,15 @@ int main(){
     displayBoard();
     std::cout <<"you losttt\n";
     std::cout <<"Hint: its impossible to win, as long as the laws of physics don't change.";
+}
+
+void checkTie(int n){
+    if(n == 9){
+        displayBoard();
+        std::cout <<"You tied!!!!\nGood job.";
+        std::exit(0);
+
+    }
 }
 
 int status(char arr[3][3]){
