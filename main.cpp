@@ -1,6 +1,5 @@
 #include <iostream>
-
-
+//No forced tie system in place. If so, we are assuming perfect play.
 void printSeperator();
 void clearScreen();
 void displayBoard();
@@ -36,14 +35,14 @@ int main(){
             makeComputerMove();
             moves++;
             choice++;
-            checkTie(choice);
+            checkTie(moves);
             continue;
         }
         else{
             makeHumanMove();
             moves++;
             choice++;
-            checkTie(choice);
+            checkTie(moves);
             continue;
         }
         
@@ -55,8 +54,11 @@ int main(){
 
 void checkTie(int n){
     if(n == 9){
+        clearScreen();
+        printSeperator();
         displayBoard();
-        std::cout <<"You tied!!!!\nGood job.";
+        printSeperator();
+        std::cout <<"You tied!!!!\nGood job.\n";
         std::exit(0);
 
     }
